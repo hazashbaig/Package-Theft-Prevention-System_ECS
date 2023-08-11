@@ -34,9 +34,7 @@ if __name__ == '__main__':
         
         elif choice == 3:
             break
-
-        elif choice == 4:
-            mysql_python.display_data()
+        
         else:
             print("Invalid Choice. Please Try Again...")
         
