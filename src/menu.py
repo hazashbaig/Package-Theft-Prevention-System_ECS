@@ -1,20 +1,21 @@
 from face_recognize import face_recognize
 from train import train_faces
+import mysql_python
+from keypad_basic_code import key_pressed
 
 if __name__ == '__main__':
     choice = -1
     while choice != 3:
         print("\n___Welcome to Package Anti-Theft System  !!___\n")
-        print("Do you want to :")
-        print("1) Train Faces")
-        print("2) Take Delivery")
+        print("1) Incoming Package")
+        print("2) Take Package")
         print("3) Exit System")
 
         print("Your choice : ")
-        choice = int(input())
-        
+        choice = key_pressed()
+    
         if choice == 1:
-            train_faces()
+            pass
         
         elif choice == 2:
             student = face_recognize()
@@ -23,6 +24,9 @@ if __name__ == '__main__':
         
         elif choice == 3:
             break
+
+        elif choice == 4:
+            mysql_python.display_data()
         else:
             print("Invalid Choice. Please Try Again...")
         

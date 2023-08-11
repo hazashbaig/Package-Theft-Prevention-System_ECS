@@ -33,7 +33,7 @@ def readLine(line, characters):
         return characters[2]
     GPIO.output(line, GPIO.LOW)
 
-def read_key_pressed():
+def key_pressed():
     try:
         while True:
             readLine(L1, ["1", "2", "3"])
