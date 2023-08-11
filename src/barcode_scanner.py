@@ -29,7 +29,7 @@ def remove_order_from_all_orders(barcode_number):
         save_all_orders(all_orders_list)
 
 def get_barcode():
-    cap = cv2.VideoCapture(1)
+    cap = cv2.VideoCapture(0)
     flag = 0
     barcode_detected = ""
 
@@ -62,32 +62,32 @@ def get_barcode():
             return barcode_detected
 
 
-# Load the data from data.json
-with open('data.json') as json_file:
-    data = json.load(json_file)
+# # Load the data from data.json
+# with open('data.json') as json_file:
+#     data = json.load(json_file)
 
-# Load all orders from all_orders.json
-all_orders = load_all_orders()
+# # Load all orders from all_orders.json
+# all_orders = load_all_orders()
 
-cap = cv2.VideoCapture(1)
-cap.set(3, 640)
-cap.set(4, 480)
-camera = True
+# cap = cv2.VideoCapture(1)
+# cap.set(3, 640)
+# cap.set(4, 480)
+# camera = True
 
-while camera:
-    success, frame = cap.read()
+# while camera:
+#     success, frame = cap.read()
 
-    for code in decode(frame):
-        barcode_number = code.data.decode('utf-8')
+#     for code in decode(frame):
+#         barcode_number = code.data.decode('utf-8')
 
-        # Check if barcode_number is under the student "21bce7503" and remove it from Orders if present
-        if remove_order_from_student(data, barcode_number):
-            print("Barcode removed from student 21bce7503 Orders:", barcode_number)
-            # Save the updated data back to data.json
-            with open('data.json', 'w') as json_file:
-                json.dump(data, json_file, indent=4)
+#         # Check if barcode_number is under the student "21bce7503" and remove it from Orders if present
+#         if remove_order_from_student(data, barcode_number):
+#             print("Barcode removed from student 21bce7503 Orders:", barcode_number)
+#             # Save the updated data back to data.json
+#             with open('data.json', 'w') as json_file:
+#                 json.dump(data, json_file, indent=4)
         
 
-    cv2.imshow('Testing-code-scan', frame)
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
+#     cv2.imshow('Testing-code-scan', frame)
+#     if cv2.waitKey(1) & 0xFF == ord('q'):
+#         break
