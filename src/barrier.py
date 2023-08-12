@@ -1,13 +1,10 @@
 import RPi.GPIO as GPIO
 import time
 
-# Set up GPIO mode
 GPIO.setmode(GPIO.BCM)
 
-# Set the GPIO pin for the servo
 servo_pin = 18
 
-# Set up the GPIO pin for output
 GPIO.setup(servo_pin, GPIO.OUT)
 
 # Create a PWM instance

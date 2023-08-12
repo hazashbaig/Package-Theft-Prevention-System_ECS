@@ -8,24 +8,6 @@ sql_conn = mysql.connector.connect(
         database = "ecs"
     )
 
-def display_data(): 
-    global sql_conn
-    
-    object = sql_conn.cursor()
-
-    query = "SELECT orders FROM barcode"
-    object.execute(query)
-
-
-    rows = object.fetchall()
-
-    for row in rows:
-        for data in row:
-            print(data)
-            print(type(data))
-
-# display_data(sql_conn)
-
 def get_all_orders():
     global sql_conn
     cursor = sql_conn.cursor()
