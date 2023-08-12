@@ -9,8 +9,8 @@ if __name__ == '__main__':
     while choice != 0:
         print("\n___Welcome to Package Anti-Theft System  !!___\n")
         print("1) Incoming Package (for delivery personnel)")
-        print("2) Enter into package room to collect package")
-        print("3) Exit out of package room after collecting package")
+        print("2) Enter into package room to collect package (for student)")
+        print("3) Exit out of package room after collecting package (for student)")
         print("4) Give Feedback")
 
         print("Your choice : ")

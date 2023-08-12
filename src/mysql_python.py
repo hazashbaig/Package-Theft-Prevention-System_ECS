@@ -2,7 +2,7 @@ import mysql.connector
 import json
 
 sql_conn = mysql.connector.connect(
-        host = "localhost",
+        host = "192.168.1.144",
         user = "root",
         password = "",
         database = "ecs"
@@ -102,3 +102,5 @@ def storeReview(student_reg_no, review):
     sql_conn.commit()
 
     print("Review stored successfully!")
+
+print(get_all_orders())

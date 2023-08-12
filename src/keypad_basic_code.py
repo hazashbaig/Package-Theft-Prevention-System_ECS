@@ -33,21 +33,14 @@ def readLine(line, characters):
         return characters[2]
     GPIO.output(line, GPIO.LOW)
 
-def key_pressed():
-    entered_number = ""
+def read_key_pressed():
     try:
         while True:
-            char = readLine(L1, ["1", "2", "3"])
-            if char == "*":
-                entered_number = ""
-            elif char == "#":
-                print("Entered Number:", entered_number)
-            else:
-                entered_number += char
+            readLine(L1, ["1", "2", "3"])
+            readLine(L2, ["4", "5", "6"])
+            readLine(L3, ["7", "8", "9"])
+            readLine(L4, ["*", "0", "#"])
             time.sleep(0.3)
     except KeyboardInterrupt:
         print("\nApplication stopped!")
         GPIO.cleanup()
-
-if __name__ == "__main__":
-    key_pressed()
