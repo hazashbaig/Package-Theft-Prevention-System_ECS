@@ -2,7 +2,7 @@ import mysql.connector
 import json
 
 sql_conn = mysql.connector.connect(
-        host = "192.168.0.144",
+        host = "192.168.0.104",
         user = "root",
         password = "",
         database = "ecs"
