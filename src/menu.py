@@ -6,12 +6,12 @@ import time
 
 if __name__ == '__main__':
     choice = -1
-    while choice != 4:
+    while choice != 0:
         print("\n___Welcome to Package Anti-Theft System  !!___\n")
         print("1) Incoming Package (for delivery personnel)")
         print("2) Enter into package room to collect package")
         print("3) Exit out of package room after collecting package")
-        print("4) Exit System")
+        print("4) Give Feedback")
 
         print("Your choice : ")
         choice = int(input())
@@ -33,9 +33,9 @@ if __name__ == '__main__':
             print(student)
 
             orders = mysql_python.student_orders(student)
-            print(orders)
 
             if orders:
+                print(f"You have {len(orders)} package(s) to collect")
                 print("servo opened")
                 time.sleep(6)
                 print("servo closed")
@@ -56,6 +56,13 @@ if __name__ == '__main__':
             print("servo closed")
 
         elif choice == 4:
+            student = face_recognize()
+            print(f"{student} you may write the review please: ")
+            review = mysql_python.enterText()
+            mysql_python.storeReview(student, review)
+            print(f"Thanks for the feedback {student}")
+
+        elif choice == 0:
             break
         else:
             print("Invalid Choice. Please Try Again...")

@@ -84,6 +84,7 @@ def delete_order_for_student(student_reg_no, order_no):
         orders_data = json.loads(orders_str)
 
         order_ids = orders_data.get("Orders", [])
+        print(order_ids)
 
         if order_no in order_ids:
             order_ids.remove(order_no)
@@ -94,9 +95,28 @@ def delete_order_for_student(student_reg_no, order_no):
             cursor.execute(update_query)
             sql_conn.commit()
 
-            print(f"Order {order_no} removed for student with regno {student_reg_no}")
+             # Insert into "orders delivered" table
+            insert_query = f"INSERT INTO `orders delivered` (regno, order_no) VALUES ('{student_reg_no}', '{order_no}')"
+            cursor.execute(insert_query)
+            sql_conn.commit()
+
+            print(f"Order {order_no} marked as delivered for student {student_reg_no}")
         else:
             print(f"Order {order_no} not found for student with regno {student_reg_no}")
     else:
         print(f"Student with regno {student_reg_no} not found.")
 
+def enterText():
+    review = input("Please enter your review: ")
+    return review
+
+def storeReview(student_reg_no, review):
+    global sql_conn
+    cursor = sql_conn.cursor()
+
+    # Insert the review into the "reviews" table with automatic timestamp
+    insert_query = f"INSERT INTO reviews (regno, review) VALUES ('{student_reg_no}', '{review}')"
+    cursor.execute(insert_query)
+    sql_conn.commit()
+
+    print("Review stored successfully!")
