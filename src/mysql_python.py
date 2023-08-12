@@ -102,5 +102,3 @@ def storeReview(student_reg_no, review):
     sql_conn.commit()
 
     print("Review stored successfully!")
-
-print(get_all_orders())
